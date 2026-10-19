@@ -1,0 +1,36 @@
+COMP 7810A Assignment Two — live Anvil Ex3 (screenshot run)
+Run date: 2026-10-13 · RPC: http://127.0.0.1:18545 · chain ID: 31337
+Script: bash scripts/ex3-display.sh (self-contained: starts Anvil, deploys, runs Ex1 + Ex3)
+
+COMP 7810A Assignment Two — Ex3 depeg demonstration (live Anvil, chain 31337)
+MockUSDC 0x5FbDB2315678afecb367f032d93F642f64180aa3 · SimpleStablecoin 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 · Vault 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+
+== Ex1: deposit 1000 mUSDC through the vault ==
+  totalSupply()      = 1000000000 [1e9]
+  totalCollateral()  = 1000000000 [1e9]
+
+== Ex3 step 1: attacker mints without MINTER_ROLE — must revert ==
+AccessControlUnauthorizedAccount(0x70997970C51812dc3A010C7d01b50e0d17dc79C8, 0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6)
+  reverted (custom error) — as expected
+
+== Ex3 step 2: admin grants MINTER_ROLE to the attacker ==
+status               1 (success)
+
+== Ex3 step 3: attacker mints 1,000,000 sUSD out of thin air ==
+status               1 (success)
+
+== Ex3 step 4: THE DEPEG — read the numbers ==
+  totalSupply()      = 1001000000000
+  totalCollateral()  = 1000000000
+  attacker balance   = 1000000000000
+  supply / collateral = 1001
+
+Supply exceeds collateral by a factor of 1001 — the peg is gone.
+No contract code was changed to do this. Screenshot the block above.
+
+Notes:
+- The above is the verbatim Terminal output; submission/ex3.png is the screenshot
+  of exactly this run (captured 2026-10-13 14:50, 1614x1218).
+- One role grant and one mint — no contract code changed — took the backing ratio
+  from 1x to 1001x: 1,000,000,000,000 sUSD have no collateral behind them while
+  the honest 1,000,000,000 deposit stays locked in the vault.

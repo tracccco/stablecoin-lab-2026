@@ -1,0 +1,39 @@
+{
+  "chainId": 11155111,
+  "network": "Sepolia",
+  "deployer": "0x9b977ba5E443f5d6d8d603Dc912cF9ff1f4469F8",
+  "MockUSDC": "0x9cfc6ff74644b01357afbc94816ed7dc16700053",
+  "SimpleStablecoin": "0x9e9247Ba864b7421803A4Bf27A11F71B309e034f",
+  "Vault": "0x4FA94D7e615C4FD84B548Ca8a72b6f30a66B4ceC",
+  "etherscan": {
+    "MockUSDC": "https://sepolia.etherscan.io/address/0x9cfc6ff74644b01357afbc94816ed7dc16700053#code",
+    "SimpleStablecoin": "https://sepolia.etherscan.io/address/0x9e9247Ba864b7421803A4Bf27A11F71B309e034f#code",
+    "Vault": "https://sepolia.etherscan.io/address/0x4FA94D7e615C4FD84B548Ca8a72b6f30a66B4ceC#code"
+  },
+  "deployment": {
+    "date": "2026-10-13",
+    "method": "cast send --create with explicit --gas-limit (forge script gas estimates are broken on this network, see DEPLOYMENT.md)",
+    "transactions": {
+      "MockUSDC": "0x8a0b2ca040706fe1c018f3fab8b07dfa2564b4a3ad45e0d918aa490d65d56a54",
+      "SimpleStablecoin": "0xb7d287c66521e19985bae872a92478616dbc4bd6235fea701634c989b89413b6",
+      "grantRole_MINTER_to_Vault": "0x9959a0380f6a3f3a09e76d98950624061665032373fb29e4c9f08c36fafccb7f"
+    },
+    "gasUsed": {
+      "MockUSDC": 3397437
+    },
+    "postDeployChecks": {
+      "vault_collateral_matches_usdc": true,
+      "vault_stable_matches_susd": true,
+      "minter_role_granted_to_vault": true,
+      "code_present_at_all_three_addresses": true
+    },
+    "verification": {
+      "etherscan": "all three pages show Source Code Verified (Etherscan verifier confirmed all three)",
+      "sourcify": {
+        "MockUSDC": "exact_match",
+        "SimpleStablecoin": "exact_match",
+        "Vault": "exact_match"
+      }
+    }
+  }
+}

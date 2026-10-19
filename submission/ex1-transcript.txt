@@ -1,0 +1,16 @@
+Ex1 independent command-line replay · local Anvil chain 31337 · port 18645
+Both tokens have 6 decimals; values are smallest units.
+faucet 1000 mUSDC:
+status               1 (success)
+approve vault for 1000 mUSDC:
+status               1 (success)
+deposit 1000 mUSDC:
+status               1 (success)
+totalSupply: 1000000000
+totalCollateral: 1000000000
+admin sUSD balance: 1000000000
+redeem 400 sUSD:
+status               1 (success)
+totalSupply: 600000000
+totalCollateral: 600000000
+admin mUSDC balance: 400000000

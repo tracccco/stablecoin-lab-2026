@@ -1,0 +1,38 @@
+$ make test
+Ran 7 tests for test/Stablecoin.t.sol:StablecoinTest
+[PASS] testFuzz_Invariant_CollateralBacksSupply(uint96) (runs: 256, μ: 252722, ~: 252728)
+[PASS] test_Deposit_MintsOneToOne() (gas: 271640)
+[PASS] test_Mint_RevertsForNonMinter() (gas: 43275)
+[PASS] test_Pause_BlocksTransfers() (gas: 316234)
+[PASS] test_Redeem_BurnsAndReturnsCollateral() (gas: 334921)
+[PASS] test_Redeem_RevertsOnEmptyVault() (gas: 37575)
+[PASS] test_Redeem_RevertsOnZeroAmount() (gas: 32141)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 20.36ms (17.71ms CPU time)
+Ran 1 test suite in 26.79ms (20.36ms CPU time): 7 tests passed, 0 failed, 0 skipped (7 total tests)
+exit: 0
+
+$ make exercise
+Suite result: ok. 15 passed; 0 failed; 0 skipped; finished in 14.19ms (15.08ms CPU time)
+Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 16.07ms (14.47ms CPU time)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 16.28ms (16.69ms CPU time)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 9.93s (9.92s CPU time)
+Ran 4 test suites in 9.93s (9.97s CPU time): 34 tests passed, 0 failed, 0 skipped (34 total tests)
+exit: 0
+
+$ make challenge
+Ran 2 tests for test/challenges/Unstoppable.t.sol:UnstoppableChallenge
+[PASS] test_assertInitialState() (gas: 177287)
+[PASS] test_unstoppable() (gas: 113262)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 1.68ms (518.58µs CPU time)
+Ran 1 test suite in 6.14ms (1.68ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)
+exit: 0
+
+$ deep invariant campaign (256 runs x 100 depth)
+[PASS]
+[PASS] invariant_CollateralBacksSupply
+[PASS] invariant_VaultHoldsNoStablecoin
+ InvariantTasksTest invariants (runs: 256, calls: 25600, reverts: 0)
+| Contract     | Selector | Calls | Reverts | Discards |
+[PASS] test_Ex6_HandlerRoundTrip() (gas: 293364)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 1.95s (1.95s CPU time)
+exit: 0
